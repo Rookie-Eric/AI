@@ -2,8 +2,8 @@
 
 '''
 这是第一个线性回归的简单例子，基于单项式的线性方程，类似于求y = ax + b;   b是偏差值，根据方程得出 ,b = y - ax ,y是真实结果
-用来求时间与功率的关系，把时间看做X,把功率比作Y;
-根据画图的实验结果得出时间与功率的拟合程度很低说明时间和功率没有关系
+用来求功率与电流的关系，把功率看做X,把电流比作Y;
+根据画图的实验结果得出功率与电流的拟合程度很高，说明功率和电流是强关系
 '''
 
 #导入需要的模块、包
@@ -36,28 +36,22 @@ new_df = df.replace('?',np.nan) #？替换成np.nan
 #对于空值，看数据来源，一般是从数据库取数据，你取的时候一定知道空值是什么，别人给你的，你去问一下
 datas = new_df.dropna(how='any')#删除空值，any是只要有空值我就删，all是这行都是空值我就删除
 
-#创建一个时间字符串格式化字符串
-# 时间字符串换成时间元祖
-def date_format(dt):
-    import time
-    t = time.strptime(' '.join(dt),'%d/%m/%Y %H:%M:%S')
-    return(t.tm_year,t.tm_mon,t.tm_mday,t.tm_hour,t.tm_min,t.tm_sec)#检查细致，看定义的函数跟我是否一样
-
 #获取x和y变量，并将时间转换成数值型的连续变量
-X = datas[names[0:2]]
-X = X.apply(lambda x:pd.Series(date_format(x)),axis=1) #axis=1是列，按行取列的数据
-Y = datas[names[2]]
+X = datas[names[2:4]]
+Y = datas[names[5:6]]
 
-print X.head(3)
-print Y.head(3)
+print X.head(5)
+print Y.head(5)
 
 #对数据集进行测试数据集和训练数据集划分
 from sklearn.model_selection import train_test_split
 X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.3,random_state=0)
 
+
 #数据标准化：3种 
 from sklearn.preprocessing import StandardScaler
 ss = StandardScaler()
+
 X_train = ss.fit_transform(X_train)
 X_test = ss.transform(X_test)
 
@@ -102,7 +96,7 @@ t=np.arange(len(X_test))
 plt.plot(t, Y_test, 'r-', linewidth=2, label=u'真实值')
 plt.plot(t, y_predict, 'g-', linewidth=2, label=u'预测值')
 plt.legend(loc = 'lower left') #图例的位置
-plt.title(u"线性回归预测时间和功率之间的关系", fontsize=20)
+plt.title(u"线性回归预功率和电流之间的关系", fontsize=20)
 plt.grid(b=True)
 plt.show()
 
