@@ -23,6 +23,7 @@ df = pd.read_csv(path,sep=';')
 df.head()
 #获取列名称
 df.columns
+# 数据：日期、时间、有功功率、无功功率、电压、电流、厨房电功率、洗衣机电功率、热水器的电功率
 names=['Date', 'Time', 'Global_active_power', 'Global_reactive_power',
        'Voltage', 'Global_intensity', 'Sub_metering_1', 'Sub_metering_2',
        'Sub_metering_3']
@@ -106,6 +107,6 @@ plt.title(u"线性回归预测时间和功率之间的关系", fontsize=20)
 plt.grid(b=True)
 plt.show()
 
-# 数据：日期、时间、有功功率、无功功率、电压、电流、厨房电功率、洗衣机电功率、热水器的电功率
+
 
 
