@@ -1,5 +1,11 @@
 # coding: utf-8
 
+'''
+这是第一个线性回归的简单例子，基于单项式的线性方程，类似于求y = ax + b;   b是偏差值，根据方程得出 ,b = y - ax ,y是真实结果
+用来求时间与功率的关系，把时间看做X,把功率比作Y;
+根据画图的实验结果得出时间与功率的拟合程度很低说明时间和功率没有关系
+'''
+
 #导入需要的模块、包
 import sklearn
 from sklearn.linear_model import LinearRegression
@@ -86,7 +92,7 @@ lr.coef_
 # joblib.load('data_ss.model')
 # joblib.load('data_lr.model')
 
-#防止中文乱码
+#防止中文乱码问题
 mpl.rcParams['font.sans-serif']=[u'simHei']
 mpl.rcParams['axes.unicode_minus']=False
 
