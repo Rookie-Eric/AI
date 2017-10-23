@@ -1,4 +1,4 @@
-# coding: utf-8
+# coding=utf-8
 
 '''
 这是第一个线性回归的简单例子，基于单项式的线性方程，类似于求y = ax + b;   b是偏差值，根据方程得出 ,b = y - ax ,y是真实结果
@@ -14,6 +14,12 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from matplotlib.font_manager import FontManager,FontProperties
+
+#matplotlib不会每次启动时都重新扫描所有的字体文件并创建字体索引列表，
+# 因此在复制完字体文件之后，需要运行下面的语句以重新创建字体索引列表
+from matplotlib.font_manager import _rebuild
+_rebuild()
 
 #导入数据
 path='datas/household_power_consumption_200.txt' #路径一定要看数据放的位置，写自己的对应存储路径即可
@@ -94,7 +100,7 @@ lr.coef_
 # joblib.load('data_lr.model')
 
 #防止中文乱码问题
-mpl.rcParams['font.sans-serif']=[u'simHei']
+mpl.rcParams['font.sans-serif']=[u'SimHei']
 mpl.rcParams['axes.unicode_minus']=False
 
 #画图
@@ -106,6 +112,7 @@ plt.legend(loc = 'lower left') #图例的位置
 plt.title(u"线性回归预测时间和功率之间的关系", fontsize=20)
 plt.grid(b=True)
 plt.show()
+
 
 
 
