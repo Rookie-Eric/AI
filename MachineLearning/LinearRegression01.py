@@ -81,12 +81,10 @@ print "训练数据的拟合程度R方：",lr.score(X_train,Y_train) #R方越趋
 #RMSE  
 
 print "测试数据的拟合程度R方：",lr.score(X_test,Y_test)
-
 mse = np.average((y_predict-np.array(Y_test))**2)
 rmse = np.sqrt(mse)
 print "MSE:" ,mse
 print "RMSE:",rmse
-
 #返回的模型的具体参数，就是我们讲的theta
 lr.coef_
 
