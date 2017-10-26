@@ -37,9 +37,9 @@ new_df = df.replace('?',np.nan) #？替换成np.nan
 #对于空值，看数据来源，一般是从数据库取数据，你取的时候一定知道空值是什么，别人给你的，你去问一下
 datas = new_df.dropna(how='any')#删除空值，any是只要有空值我就删，all是这行都是空值我就删除
 
-#获取x和y变量，并将时间转换成数值型的连续变量
 X = datas[names[2:4]]
 Y = datas[names[5:6]]
+
 
 print X.head(5)
 print Y.head(5)
@@ -53,8 +53,8 @@ X_train,X_test,Y_train,Y_test = train_test_split(X,Y,test_size=0.3,random_state=
 from sklearn.preprocessing import StandardScaler
 ss = StandardScaler()
 
-X_train = ss.fit_transform(X_train)
-X_test = ss.transform(X_test)
+X_train = ss.fit_transform(X_train) # 对训练数据进行正态分布处理并且训练
+X_test = ss.fit_transform(X_test)
 
 #模型的构建与训练过程
 from sklearn.linear_model import LinearRegression
