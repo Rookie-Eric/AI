@@ -86,7 +86,7 @@ y_predict = lr.predict(X_test)  # Y_test
 print "训练数据的拟合程度R方：", lr.score(X_train, Y_train)  # R方越趋近于1越好
 # RMSE
 
-<<<<<<< HEAD
+
 print "测试数据的拟合程度R方：", lr.score(X_test, Y_test)
 
 mse = np.average((y_predict - np.array(Y_test)) ** 2)
@@ -95,14 +95,13 @@ print "MSE:", mse
 print "RMSE:", rmse
 
 # 返回的模型的具体参数，就是我们讲的theta
-=======
+
 print "测试数据的拟合程度R方：",lr.score(X_test,Y_test)
 mse = np.average((y_predict-np.array(Y_test))**2)
 rmse = np.sqrt(mse)
 print "MSE:" ,mse
 print "RMSE:",rmse
 #返回的模型的具体参数，就是我们讲的theta
->>>>>>> 0c92e3d0e3371363c2c39515d5c051ab2356a0cd
 lr.coef_
 
 # #模型保存/持久化
